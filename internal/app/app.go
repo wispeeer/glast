@@ -60,10 +60,11 @@ func (app *app) flags(argc int, argv []string) (bool, error) {
 	switch argv[0] {
 	case "-e", "--entry", "entry":
 		isBreak = false
-		if argc >= 2 {
+		if argc >= 3 {
 			system.Entry = argv[1]
+			system.GoEntry = argv[2]
 		} else {
-			err = fmt.Errorf("glast --entry ./")
+			err = fmt.Errorf("glast --entry ./ ./main.go")
 		}
 	case "-h", "--help", "help":
 		isBreak = true

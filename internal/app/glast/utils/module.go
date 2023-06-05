@@ -28,11 +28,11 @@ func ModuleName(entry string) string {
 			module = strings.TrimPrefix(lineText, "module")
 		}
 	}
-	module = strClean(module)
+	module = StrClean(module)
 	return module
 }
 
-func strClean(s string) string {
+func StrClean(s string) string {
 	str := strings.Join(strings.Split(s, "\""), "")
 	str = strings.Join(strings.Fields(str), " ")
 	return str
