@@ -3,16 +3,18 @@ package utils
 import (
 	"bufio"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/wispeeer/glast/pkg/utils"
 )
 
-func ModuleName() string {
-	if !utils.IsExist("go.mod") {
+func ModuleName(entry string) string {
+	gomodFilePath := filepath.Join(entry, "go.mod")
+	if !utils.IsExist(gomodFilePath) {
 		panic("go.mod not found")
 	}
-	file, err := os.Open("go.mod")
+	file, err := os.Open(gomodFilePath)
 	if err != nil {
 		panic(err)
 	}
